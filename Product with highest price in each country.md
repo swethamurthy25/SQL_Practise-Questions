@@ -39,6 +39,23 @@ Smartphone    | China   | 800   | 1
 Tablet        | China   | 1000  | 2
 Headphones    | Germany | 150   | 1
 
+```sql
+WITH CTE AS (
+    SELECT P.Product_Name, S.Country, P.Price,
+        RANK() OVER (PARTITION BY S.Country ORDER BY P.Price) AS Rank
+    FROM Product P
+    INNER JOIN Supplier S ON P.Supplier_id = S.Supplier_id
+)
 
+SELECT name FROM CTE
+WHERE Rank = 1
+GROUP BY Country;
+;
+```
 
+name
+--------------
+Camera
+Smartphone
+Headphones
 
