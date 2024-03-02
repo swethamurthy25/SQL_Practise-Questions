@@ -16,7 +16,7 @@ Supplier_id | Supplier_Name | Country
 3           | Supplier_C    | Germany
 
 
-Write an SQL query to find the name of the product with the highest price in each country.
+Write an SQL query to find the name of the product with the highest price in each country. The output should contain product name, highest price and country
 
 1. First find the rank of each product based on price & country-wise
 
@@ -47,15 +47,16 @@ WITH CTE AS (
     INNER JOIN Supplier S ON P.Supplier_id = S.Supplier_id
 )
 
-SELECT name FROM CTE
+SELECT name, price, country FROM CTE
 WHERE Rank = 1
 GROUP BY Country;
 ;
 ```
 
-name
---------------
-Camera
-Smartphone
-Headphones
+Product_Name | Price | Country
+--------------|-------|---------
+Camera        | 500   | USA
+Smartphone    | 800   | China
+Headphones    | 150   | Germany
+
 
