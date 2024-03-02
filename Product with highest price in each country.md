@@ -28,9 +28,17 @@ WITH CTE AS (
     INNER JOIN Supplier S ON P.Supplier_id = S.Supplier_id
 )
 
-SELECT *
-FROM CTE;
+SELECT * FROM CTE;
+```
 
-'''
+Product_Name | Country | Price | Rank
+--------------|---------|-------|-----
+Camera        | USA     | 500   | 1
+Laptop        | USA     | 1200  | 2
+Smartphone    | China   | 800   | 1
+Tablet        | China   | 1000  | 2
+Headphones    | Germany | 150   | 1
+
+
 
 
