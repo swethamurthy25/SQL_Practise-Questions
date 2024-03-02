@@ -22,10 +22,15 @@ Write an SQL query to find the name of the product with the highest price in eac
 
 ```sql
 WITH CTE AS (
-            SELECT P.Product_Name, S.Country, P.Price,
-            RANK() OVER (PARTITION BY S.Country ORDER BY P.Price) AS Rank
-        FROM Product P
-        INNER JOIN Supplier S ON P.Supplier_id = S.Supplier_id)
+    SELECT P.Product_Name, S.Country, P.Price,
+        RANK() OVER (PARTITION BY S.Country ORDER BY P.Price) AS Rank
+    FROM Product P
+    INNER JOIN Supplier S ON P.Supplier_id = S.Supplier_id
+)
+
+SELECT *
+FROM CTE;
+
 '''
 
 
